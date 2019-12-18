@@ -1,0 +1,33 @@
+ function isUnique(arr, el){
+
+                    var hasOne = false;
+                    for (let item of arr){
+                        if(item === el){
+                            if(hasOne){
+                                return false;
+                            }else{
+                                hasOne = true;
+                            }
+                        }
+                    }
+                    return true;
+                }
+
+
+
+
+            function nonUniqueElements(data){
+                    const new_result =[]
+                    for(let item of data){
+                        if(isUnique(data, item)){
+                            new_result.push(item)
+                        }
+                    }
+                    return new_result;
+                }
+    ///중복 배열 값 빼는 함수.!!!!!!!!!!!!!
+    
+    
+    
+    
+    
