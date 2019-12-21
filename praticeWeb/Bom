@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bom Of Specification</title>
+</head>
+    <style>
+        li{
+            border-bottom: 1px solid gray;
+            padding : 1rem;
+        }
+    
+    
+    </style>
+<body>
+    <h1>BOM (Browser Object Model)</h1>
+    <p style="Border:1px solid gray;">
+        웹브라우저의 창이나 프레임을 추상화해서 프로그래밍 적으로 제어할 수 있도록 제공하는 수단이다.<br/>BOM은 전역객체인 Window의 프로퍼티와 메소들을 통해서 제어할 수 있다.<br/>
+        따라서 BOM에 대한 공부는 Window 객체의 프로퍼티와 메소드의 사용법을 배우는 것이라고 해도 과언이 아닐 것이다.</p>
+    <ul>
+        <li>Window 객체
+            <p>모든 객체가 소속된 객체이고 전역 객체이면서, 창이나 프레임을 의미한다.</p></li>
+        <li>예제
+            <p style="border:1px solid gray; width: 300px; padding:1rem;">alert('Hello World');<br/>window.alert('Hello World');<br/> <button id="compOfWindow" onclick="COW();">실행</button> </p></li>
+        <li>객체를 만든다는 것은 결국 window 객체의 프로퍼티를 만드는 것 과 같다.</li>
+        <li>예제
+            <pre style="border:1px solid gray; width: 300px;">
+                var a = {id:1};
+                alert(a.id);
+                alert(window.a.id);
+                <button id ="compOfWindow2" onclick="COW2();">실행</button>
+            </pre></li>
+        <li>예제를 통해 알 수 있는 것 :  전역변수와 함수가 사실은 window 객체의 프로퍼티와 메소드라는 것이다. 모든 객체는 window의 자식이다.<br/>
+            이러한 특성은 ECMAScript에서는 Global 객체라고 부른다. <br/>
+            웹브라우저 자바스크립트에서 <span style="color: red;">Window 객체는 ECMAScript의 전역객체이면서 동시에 웹브라우저의 창이나 프레임을 제어하는 역할</span>을 한다.</li>
+    </ul>    
+    <h2>사용자와 커뮤니케이션하기</h2>
+    <p>HTML은 form을 통해서 사용자와 커뮤니케이션할 수 있는 기능을 제공한다. </p>
+    <ul>
+        <li>alert</li>
+        <li>confirm
+            <p>확인을 누르면 true, 취소를 누르면 false를 리턴한다.</p>
+            <pre style="border:1px solid gray;">function func_confirm(){
+                    if(confirm('ok?')){
+                        alert('ok');
+                        }else{
+                            alert('cancle');
+                        }
+                    }
+            <button onclick="confirmEx();">실행</button>
+            </pre></li>
+        <li>prompt
+            <pre style="border:1px solid gray;">function func_prompt(){
+                   if(prompt('id?') === 'jung'){
+                       alert('welcome');
+                       }else{
+                        alert('fail');
+                       }
+                   }
+            <button onclick="func_prompt();">실행</button><button style="margin-left: 5px;" onclick="func_logEx();">로그인 시스템 예제실습</button>   
+            </pre></li>
+    </ul>    
+    <script>
+    
+        function COW(){
+            window.alert('Hello World');
+        }
+        function COW2(){
+            var a = {b:1};
+            window.alert('b');
+        }
+        function confirmEx(){
+            if(confirm('ok?')){
+                alert('ok');
+            }else{
+                alert('cancle.');
+            }
+            
+        }
+        function func_prompt(){
+            if(prompt('id?') === ('jung')){
+               alert('welcome');
+               }else{
+                   alert('fail');
+               }
+        }
+        function func_logEx(){
+            var win = window.open('Bpratice13_log.html','ot','width = 300px, height = 500px')
+        }
+    
+    </script>
+</body>
+</html>
