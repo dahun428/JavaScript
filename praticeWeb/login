@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>LoginSystem</title>
+</head>
+    <style>
+        span{
+            font-size: 1.2rem;
+        }
+        input{
+            font-size: 1.2rem;
+        }
+        #IDinput{
+            margin-left:100px;
+        }
+        #PWinput{
+            margin-left: 15px;
+        }
+        #btnlog{
+            margin: 10px;
+            padding: 5px;
+            width: 100px; height: 40px;
+        }
+        button{
+            margin-left:5px; width:80px; height:30px; padding: 6px;
+            text-align: center;
+        }
+        .login{
+            border:1px solid gray;
+            width: 380px;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+    </style>
+<body>
+   <h1>Login System</h1>
+    <div class = "login" style="float: left;"><span>ID : <input id="IDinput" type="text" value="ID를 입력하세요" onfocus="this.value=''; return true;"/></span></div>
+    <div><button id="btnlog" onclick="LoginSystem_func();">로그인</button></div>
+    <div class = "login" style="clear: both;"><span>PASSWORD : <input id="PWinput" type="text" value="Password를 입력하세요" onfocus="this.value=''; return true;"></span></div>
+    
+    
+    <script>
+        function LoginSystem_func(){
+            var ID_input = document.getElementById('IDinput').value;
+            var PW_input = document.getElementById('PWinput').value;
+            
+            if(ID_input === 'dahun428' && PW_input ==='1234'){
+                alert(ID_input+'님 안녕하세요!\n로그인 완료하였습니다!');
+            }else{
+                alert('로그인에 실패하였습니다.\n다른 아이디와 비밀번호를 입력해주세요');
+            }
+        }    
+    
+    </script>
+    
+</body>
+</html>
