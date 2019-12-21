@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    .button{
+        border:1px solid gray;
+        margin-left:10px; padding:0;
+        background-color:white;
+        color:black;
+       
+    }      
+    
+    </style>
+<body>
+    <h1>WEB Browser Object Module</h1>
+    <p><img style= "wdith:300px; height: 300px; border:1px solid gray; " src="https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/904/2229.png">
+    </p>
+    <ul>
+        <h3>WINDOW</h3> <input type="button" onclick="ChangeColor(this);" value = "ChangeColor">
+        <li>DOM<button class="button" type="button" onclick="Behind.DisplayContr(DomText);">▲</button></li>
+            <ol id= "DomText">
+                <li>Document Object Model.</li>
+                <li>웹페이지의 내용을 제어한다.</li>
+                <li>window의 프로퍼티인 docuemnt 프로퍼티에 할당 된 Document 객체가 이러한 작업을 담당한다.</li>
+            </ol>
+        <li>BOM<button class="button" onclick="Behind.DisplayContr(BomText);">▲</button></li>    
+            <ol id= "BomText">
+                <li>Broswser Object Model.</li>
+            
+                <li><span style="color:red;">웹페이지의 내용을 제외한</span>브라우저의 각종 요소들을 <span style="color:red;">객체화</span> 시킨 것.</li>
+                <li>전역 객체 Window의 프로퍼티에 속한 객체들이 이에 속한다.</li>
+                        <ol>
+                            <li><input type="button" onclick="alert(window.location)" value="alert(window.location)"/></li>
+                            <li><input type="button" onclick="window.open('Bpratice13.html')" value="window.open('Bpratice13.html')"/></li>
+                            <li><button id = "BomSpecific" onclick="BomSpecificNav();">BOM::구체적인 내용</button></li>
+                        </ol>
+            </ol>
+        <li>JAVASCRIPT</li>
+    </ul>
+    
+    
+    
+    <script>
+        //내용을 숨기는 함수 
+       var Behind = {
+          
+           DisplayContr : function(e){
+            
+                if(e.style.display === 'none'){
+                    e.style.display = 'block';
+                }else{
+                    e.style.display = 'none';
+                }
+           }
+       }
+       
+       
+       //글자 색변경 함수
+       function ChangeColor(self){
+            var DomT = document.getElementById('DomText'); 
+            var BomT = document.getElementById('BomText');  
+            if (self.value === 'ChangeColor'){
+                self.value = 'OriginalColor';
+                BomT.style.color = 'blue';                
+            }else{
+                self.value = 'ChangeColor';
+                BomT.style.color = 'black';
+                
+            }           
+        }
+        function BomSpecificNav(){
+            var win = window.open('Bpratice13_Bom.html','ot','width=500px, height = 800px');
+        }
+        
+    </script>
+</body>
+</html>
