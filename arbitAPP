@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>아르바이트 시급 계산기</title>
+</head>
+<body>
+    <h1>아르바이트 시급 계산기</h1>
+    <ul>
+        <li><span>알바처 : </span>
+            <select name="Alba" id="job">
+                <option value="">아르바이트 선택</option>
+                <option value="AJis">재고조사(AJis)</option>
+                <option value="Hyatt">호텔(Hyatt)</option>
+                <option value="other">기타</option>
+            </select>
+        </li>
+        <li><span>시급 : </span><input type="text" id="Time_Money"></li>
+        <li><span>오전/오후타임(07:00~22:00)</span>
+            <select name="Time_noon" id="Time_noon">
+                <option value="0">---</option>
+                <option value="3">3시간</option>
+                <option value="3.5">3시간 30분</option>
+                <option value="4.5">4시간</option>
+                <option value="4.5">4시간 30분</option>
+                <option value="5">5시간</option>
+                <option value="5.5">5시간 30분</option>
+                <option value="6">6시간</option>
+                <option value="6.5">6시간 30분</option>
+                <option value="7">7시간</option>
+            </select>
+        </li>
+        <li><span>야간타임(22:00~07:00)</span>
+            <select name="Time_night" id="Time_night">
+                <option value="0">---</option>
+                <option value="3">3시간</option>
+                <option value="3.5">3시간 30분</option>
+                <option value="4">4시간</option>
+                <option value="4.5">4시간 30분</option>
+                <option value="5">5시간</option>
+                <option value="5.5">5시간 30분</option>
+                <option value="6">6시간</option>
+                <option value="6.5">6시간 30분</option>
+                <option value="7">7시간</option>
+            </select>
+        </li>
+        <li>계산결과 : <input type="button" id="btn1" value="계산결과" onclick="ArbitFunc(this);">
+        <div id="final" style="border:1px solid gray;"></div></li>
+        
+    </ul>
+    <script>
+        
+    var Same = {
+         name : function(job){
+                return " 알바처 : " + job;  
+         },
+         Total : function(hourmoney, F_time, S_time){
+             return "총 금액  : " + ((hourmoney * F_time) + (hourmoney * S_time * 1.5)) + " 원";
+         }
+     }
+    var Noon = {
+         noonTime : function(time){
+             return "오전/오후시간 : " + time + " 시간";
+         },
+         noonMoney : function(hourmoney, time){
+             return "오전/오후금액 : " + (hourmoney * time) + " 원";
+         }
+     }
+     var Night = {
+         nightTime : function(time){
+             return "야간 시간 : " + time + " 시간";
+         },
+         nightMoney : function(hourmoney, time){
+             return "야간 금액 : " + (hourmoney * time * 1.5) + " 원";
+         }
+     }
+
+     function ArbitFunc(self){
+            var noontime = document.getElementById('Time_noon').options[document.getElementById('Time_noon').selectedIndex].value; 
+            var nighttime = document.getElementById('Time_night').options[document.getElementById('Time_night').selectedIndex].value;
+            var job = document.getElementById('job').options[document.getElementById('job').selectedIndex].value;
+            var hourmoney = document.getElementById('Time_Money').value;
+            var output = document.getElementById('final');
+            var str = "";
+
+                    if(isNaN(hourmoney) === true){
+
+                        window.alert('숫자만 입력해주세요')
+
+                    }else if((noontime ==='0')&& (nighttime ==='0')){
+                        window.alert('시간을 입력해주세요')
+                    }else{
+
+                             if(noontime == 0){
+
+                                    str+= '<p>'+Same.name(job)+'</p>'
+                                    str+= '<p>'+Night.nightTime(nighttime)+'</p>'
+                                    str+= '<p>'+Night.nightMoney(hourmoney, nighttime)+'</p>'
+
+
+                                }else if(nighttime == 0){
+                                    str+= '<p>'+Same.name(job)+'</p>'
+                                    str+= '<p>'+Noon.noonTime(noontime)+'</p>'
+                                    str+= '<p>'+Noon.noonMoney(hourmoney, noontime)+'</p>'
+
+                                }else{
+
+                                    str+= '<p>'+Same.name(job)+'</p>'
+                                    str+= '<p>'+Noon.noonTime(noontime)+'</p>'
+                                    str+= '<p>'+Night.nightTime(nighttime)+'</p>'
+                                    str+= '<p>'+Noon.noonMoney(hourmoney, noontime)+'</p>'
+                                    str+= '<p>'+Night.nightMoney(hourmoney, nighttime)+'</p>'
+                                    str+= '<p>'+Same.Total(hourmoney, noontime, nighttime)+'</p>'
+                                }
+
+                                output.innerHTML = str; 
+                     }     
+
+    }     
+     
+     
+       
+            
+        
+//        
+//        function Arbit(){
+//            
+//            var name = document.getElementById('job').options[document.getElementById('job').selectedIndex].value;
+//            var noon = document.getElementById('Time_noon').options[document.getElementById('Time_noon').selectedIndex].value;    
+//            var night = document.getElementById('Time_night').options[document.getElementById('Time_night').selectedIndex].value;    
+//            var input = document.getElementById('Time_Money').value;
+//            var output = document.getElementById('output');
+//            
+//            return output.innerHTML = name + noon + night + input;
+//        }
+//    
+    </script>
+</body>
+</html>
